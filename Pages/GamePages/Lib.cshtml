@@ -1,0 +1,32 @@
+﻿@page
+@*@model BoardGamePickerWeb.LibModel*@
+@model razerBoard.BoardModel
+@using razerBoard.Models;
+@using razerBoard.Models.Board;
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@{
+    ViewData["Title"] = "Collection";
+}
+
+
+<br />
+<br />
+<div class="container" style="width:90rem">
+    <div class="row col-12">
+        @for (int i = 0; i < UserCreation.listOfGam.Count; i++)
+        {
+
+            <div class="col-3">
+                <img src=@UserCreation.listOfPic[i] . class="card-img-top" alt="">
+                <br />
+                <br />
+                <p>@UserCreation.listOfGam[i]</p>
+                <p>Players: @UserCreation.minPlay[i] - @UserCreation.maxPlay[i]</p>
+            </div>
+
+        }
+    </div>
+</div>

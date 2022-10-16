@@ -1,0 +1,33 @@
+﻿@page
+@model BoardGamePickerWeb.testModel
+@{
+    ViewData["Title"] = "test";
+}
+
+<h1>test</h1>
+
+   <form method="post">
+       <div>Description:
+       <input type ="submit" value="Save First" asp-page-handler="First" class="btn btn-primary btn-xs" >
+       </div>
+   </form>
+
+   <form method="post">
+       <ul>
+
+           <li>Ben</li><input type="submit" asp-page-handler="Remove" />
+           <li>Ken</li>
+           <li>Jen</li>
+       </ul>
+   </form>
+
+
+   <form method="post">
+
+       @foreach (var item in BoardGamePickerWeb.testModel.name)
+       {
+           <h1> @item</h1>
+           <input type="submit" id="1" asp-page-handler="Remove" />
+       }
+
+   </form><input id="Button1" type="button" value="button" /><input id="File1" type="file" />

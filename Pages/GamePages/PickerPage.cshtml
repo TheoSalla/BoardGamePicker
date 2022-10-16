@@ -1,0 +1,102 @@
+﻿@page
+@model razerBoard.BoardModel
+@using razerBoard.Models.Board;
+@using razerBoard.Models;
+
+
+@{
+    ViewData["Title"] = "Picker";
+}
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                @*column 1*@
+                <form method="post">
+                    <div class="form-group text-success" style="font-weight:bold; font-size:large">
+                        <label>Enter BGG account</label>
+                        <input type="text" name="friendAccount" class="form-control" placeholder="Enter BGG account">
+                        <br />
+                        <button id="1" type="submit" class="btn btn-success">Submit</button>
+                        <button name="rem" type="submit" class="btn btn-success">Remove</button>
+                    </div>
+
+                    <div class="form-group text-success" style="font-weight:bold; font-size:large">
+                        <label for="exampleFormControlSelect1">Number of players</label>
+                        <select class="form-control" name="min">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            <option>9</option>
+                            <option>10</option>
+                        </select>
+                    </div>
+                    <button type="submit" name="clicked" class="btn btn-success">Submit</button>
+
+                </form>
+                <br />
+
+
+                @if (AddedPlayers.players.Count > 0)
+                {
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-header">
+                            Selected Accounts:
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            @foreach (var item in AddedPlayers.players)
+                            {
+
+
+                                <li class="list-group-item">@item </li>
+
+
+                            }
+                        </ul>
+                        <div class="card-header">
+                            Number of players selected:
+                        </div>
+                        <ul class="list-group list-group-flush">
+
+                            <li class="list-group-item"> @Model.myMin</li>
+
+                        </ul>
+
+                    </div>
+                }
+
+            </div>
+
+
+                @if (@BoardModel.showAccount.Length > 1)
+                {
+                    <div class="col-sm">
+                        <div class="card" style="width: 18rem;">
+                            <img src=@BoardModel.showPic class="card-img-top" alt="">
+                            <div class="card-body">
+                                <h5 class="card-title">@BoardModel.showGame</h5>
+                                <p class="card-text">Owner: @BoardModel.showAccount</p>
+                                <p class="card-text">Players: @BoardModel.showMin - @BoardModel.showMax</p>
+                                <a href="#" class="btn btn-success">Read about @BoardModel.showGame</a>
+                                <br />
+                                <br />
+                                <a href="/GamePages/lib" class="btn btn-success">View libary for @BoardModel.showAccount</a>
+
+                            </div>
+                        </div>
+                    </div>
+
+                }
+            </div>
+        </div>
+
+
+
+
+      
